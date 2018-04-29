@@ -13,6 +13,7 @@
 		2E2CF9EE20940ACE00EBCB46 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2E2CF9ED20940ACE00EBCB46 /* Assets.xcassets */; };
 		2E2CF9F120940ACE00EBCB46 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2E2CF9EF20940ACE00EBCB46 /* LaunchScreen.storyboard */; };
 		2E2CF9F420940ACE00EBCB46 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E2CF9F320940ACE00EBCB46 /* main.m */; };
+		2E8EDBCD20940DF400662429 /* guessFiveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E8EDBCC20940DF400662429 /* guessFiveViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,8 @@
 		2E2CF9F020940ACE00EBCB46 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2E2CF9F220940ACE00EBCB46 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2E2CF9F320940ACE00EBCB46 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		2E8EDBCB20940DF400662429 /* guessFiveViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = guessFiveViewController.h; sourceTree = "<group>"; };
+		2E8EDBCC20940DF400662429 /* guessFiveViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = guessFiveViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +66,8 @@
 				2E2CF9E720940ACE00EBCB46 /* ViewController.h */,
 				2E2CF9E820940ACE00EBCB46 /* ViewController.m */,
 				2E2CF9EA20940ACE00EBCB46 /* Main.storyboard */,
+				2E8EDBCB20940DF400662429 /* guessFiveViewController.h */,
+				2E8EDBCC20940DF400662429 /* guessFiveViewController.m */,
 				2E2CF9ED20940ACE00EBCB46 /* Assets.xcassets */,
 				2E2CF9EF20940ACE00EBCB46 /* LaunchScreen.storyboard */,
 				2E2CF9F220940ACE00EBCB46 /* Info.plist */,
@@ -142,6 +147,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2E8EDBCD20940DF400662429 /* guessFiveViewController.m in Sources */,
 				2E2CF9E920940ACE00EBCB46 /* ViewController.m in Sources */,
 				2E2CF9F420940ACE00EBCB46 /* main.m in Sources */,
 				2E2CF9E620940ACE00EBCB46 /* AppDelegate.m in Sources */,
