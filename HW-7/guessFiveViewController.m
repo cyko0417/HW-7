@@ -130,7 +130,7 @@
         if (currentPlayer==COMPUTER) {
             index=[distribution nextInt];
             [segCompCall setSelectedSegmentIndex:index];
-            NSLog(@"call=%ld", index);
+            //NSLog(@"call=%ld", index);
             //usleep(200000);
         }
         index=[distribution nextInt];
@@ -138,17 +138,17 @@
             index=[distribution nextInt];
         }
         [segCompShow setSelectedSegmentIndex:index];
-        NSLog(@"show=%ld", index);
+        //NSLog(@"show=%ld", index);
         usleep(200000);
     }
     
     // 最後顯示電腦真正的選擇
     if (currentPlayer==COMPUTER) {
         [segCompCall setSelectedSegmentIndex:call];
-        NSLog(@"Final call=%ld", call);
+        //NSLog(@"Final call=%ld", call);
     }
     [segCompShow setSelectedSegmentIndex:show];
-    NSLog(@"Final show=%ld", show);
+    //NSLog(@"Final show=%ld", show);
 }
 
 - (void) judgeResult {
