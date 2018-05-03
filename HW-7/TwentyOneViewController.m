@@ -63,6 +63,9 @@
     labelBet.enabled=false;
     buttonOneMore.enabled=false;
     buttonStop.enabled=false;
+    labelResult.text=@" ";
+    
+    [self clearAllCards];
 }
 
 - (void)cardsShuffler {
@@ -234,14 +237,15 @@
     int computerValue=[self getValueof:computerCards];
     int userValue=[self getValueof:userCards];
     int balance=0; // 玩家可得分數
+
     // 剛發完第二張牌的狀況(要用 user 的牌數來看才準)
     if (userCards.count==2 && computerValue==21) {
         if (userValue!=21) {
-            NSLog(@"莊家 21 點，玩家 %d 點，賠 %d", userValue, userBet*2);
+            msg=[NSString stringWithFormat:@"莊家 21 點，玩家 %d 點，賠 %d", userValue, userBet*2];
             balance=-userBet*2;
         }
         else {
-            NSLog(@"莊家 21 點，玩家 21 點，賠 %d", userBet);
+            msg=[NSString stringWithFormat:@"莊家 21 點，玩家 21 點，賠 %d", userBet];
             balance=-userBet;
         }
         // TODO: 結束的處理
@@ -252,6 +256,7 @@
         computerScore-=balance;
         buttonOneMore.enabled=false;
         buttonStop.enabled=false;
+        labelResult.text=msg;
     }
     
 }
@@ -261,11 +266,12 @@
     int userValue=[self getValueof:userCards];
     
     if (userValue>21) {
-        NSLog(@"玩家 %d 點爆掉，賠 %d", userValue, userBet);
+        msg=[NSString stringWithFormat:@"玩家 %d 點爆掉，賠 %d", userValue, userBet];
         userScore+=(-userBet);
         computerScore-=(-userBet);
         buttonOneMore.enabled=false;
         buttonStop.enabled=false;
+        labelResult.text=msg;
     }
 }
 
@@ -276,19 +282,19 @@
     int balance=0; // 玩家可得分數
     
     if (userValue>21) {
-        NSLog(@"玩家 %d 點爆掉，賠 %d", userValue, userBet);
+        msg=[NSString stringWithFormat:@"玩家 %d 點爆掉，賠 %d", userValue, userBet];
         balance=-userBet;
     }
     else if (computerValue>21) {
-        NSLog(@"莊家 %d 點爆掉，賺 %d", computerValue, userBet);
+        msg=[NSString stringWithFormat:@"莊家 %d 點爆掉，賺 %d", computerValue, userBet];
         balance=userBet;
     }
     else if (computerValue>userValue) {
-        NSLog(@"莊家 %d 點勝玩家 %d 點，賠 %d", computerValue, userValue, userBet);
+        msg=[NSString stringWithFormat:@"莊家 %d 點勝玩家 %d 點，賠 %d", computerValue, userValue, userBet];
         balance=-userBet;
     }
     else if (computerValue>userValue) {
-        NSLog(@"玩家 %d 點勝莊家 %d 點，賠 %d", userValue, computerValue, userBet);
+        msg=[NSString stringWithFormat:@"玩家 %d 點勝莊家 %d 點，賠 %d", userValue, computerValue, userBet];
         balance=userBet;
     }
     
@@ -298,39 +304,74 @@
         computerScore-=balance;
         buttonOneMore.enabled=false;
         buttonStop.enabled=false;
+        labelResult.text=msg;
     }
     
 }
 
 
 - (void)displayCards {
-    NSLog(@"Display Cards");
-    NSLog(@"  Cards of computer");
-    for (int i=0; i<labelComputerCards.count && i<computerCards.count; i++) {
+    //NSLog(@"Display Cards");
+    
+
+    for (int i=0; i<labelComputerCards.count; i++) {
+        if (i<computerCards.count) {
+            [self displayACard:computerCards[i] at:i inLabel:labelComputerCards hideFirst:true];
+        }
+        else {
+            [self displayANullCard:@"?" at:i inLabel:labelComputerCards];
+        }
+
+        //* For debug
+        //NSLog(@"  Cards of computer");
         if (i==0)
             NSLog(@"  X index=%d, symbol=%@", i, [computerCards[i] getSymbol]);
-        else
+        else if (i<computerCards.count)
             NSLog(@"    index=%d, symbol=%@", i, [computerCards[i] getSymbol]);
-        //((UILabel *) labelComputerCards[i]).text=[computerCards[i] getSymbol];
+         //*/
     }
-    NSLog(@"  Cards of user");
-    NSString *msg;
-    for (int i=0; i<userCards.count; i++) {
-        msg=[NSString stringWithFormat:@"    index=%d, symbol=%@", i, [userCards[i] getSymbol]];
-        NSLog(@"%@", msg);
-        //NSLog(@"    index=%d, symbol=%@", i, [userCards[i] getSymbol]);
-        //[labelUserCards[i] setTitle:[NSString stringWithFormat:@"%@", [userCards[i] getSymbol]]];
-        //((UILabel *) labelComputerCards[i]).text=[computerCards[i] getSymbol];
+   
+    NSLog(@"=====");
+    for (int i=0; i<labelUserCards.count; i++) {
+        if (i<userCards.count) {
+            [self displayACard:userCards[i] at:i inLabel:labelUserCards hideFirst:false];
+        }
+        else {
+            [self displayANullCard:@"?" at:i inLabel:labelUserCards];
+        }
+        //* For debug
+        //NSLog(@"  Cards of user");
+        if (i<userCards.count)
+            NSLog(@"    index=%d, symbol=%@", i, [userCards[i] getSymbol]);
+        //*/
     }
 }
 
-/*
-- (void) displayCard: (Card *)card forUser: (NSString *)user index:(int)index atLabel:(UILabel *)label {
-    //[label setTitle:[card getSymbol] forState:UIControlStateNormal];
-    //[label setTitle:nil forState:UIControlStateNormal];
-    label.text=[card getSymbol];
+- (void) displayACard: (Card *)card at: (int)index inLabel:(NSArray *)labels hideFirst:(BOOL) hide {
+    for (UILabel *label in labels) {
+        if (label.tag==index) {
+            if (index==0 && hide==true)
+                label.text=@"X";
+            else
+                label.text=[card getSymbol];
+        }
+    }
 }
- */
+
+- (void) displayANullCard: (NSString *)symbol at: (int)index inLabel:(NSArray *)labels {
+    for (UILabel *label in labels) {
+        if (label.tag==index)
+            label.text=symbol;
+    }
+}
+
+-(void) clearAllCards {
+    for (UILabel *label in labelComputerCards)
+        label.text=@" ";
+    for (UILabel *label in labelUserCards)
+        label.text=@" ";
+}
+
 
 
 

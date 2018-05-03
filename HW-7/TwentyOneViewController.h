@@ -25,12 +25,18 @@
     __weak IBOutlet UIButton *buttonOneMore;
     // 停止
     __weak IBOutlet UIButton *buttonStop;
-    
+    // 顯示莊家的牌
+    IBOutletCollection(UILabel) NSArray *labelComputerCards;
+    // 顯示玩家的牌
     IBOutletCollection(UILabel) NSArray *labelUserCards;
+    // 顯示結果
+    __weak IBOutlet UILabel *labelResult;
+    
     
     int computerScore;
     int userScore;
     int userBet;
+    NSString *msg;
     
     NSMutableArray *cards; // 放洗好的牌
     NSMutableArray *computerCards; // 電腦的牌
@@ -39,8 +45,7 @@
     
     
     
-    IBOutletCollection(UILabel) NSArray *labelComputerCards;
-    __weak IBOutlet UILabel *labelUserCard1;
+
     
     __weak IBOutlet UILabel *labelBet;
     
