@@ -349,6 +349,11 @@
                         <outletCollection property="labelComputerCards" destination="v0Z-4V-7ia" id="ahk-HG-dZG"/>
                         <outletCollection property="labelComputerCards" destination="R5o-7d-NhB" id="Em0-FC-oGU"/>
                         <outletCollection property="labelComputerCards" destination="RTt-VX-7W3" id="Cgc-D8-h1l"/>
+                        <outletCollection property="labelUserCards" destination="maY-8T-i98" id="dTY-Is-b1m"/>
+                        <outletCollection property="labelUserCards" destination="4L8-a1-gbu" id="Xhe-7x-9B7"/>
+                        <outletCollection property="labelUserCards" destination="70f-Cf-M3N" id="np4-hg-hDc"/>
+                        <outletCollection property="labelUserCards" destination="qYf-xA-4yD" id="1h3-as-rG3"/>
+                        <outletCollection property="labelUserCards" destination="w71-sL-Qb4" id="4hx-nW-MNd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Cu-wg-HVc" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -361,6 +366,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="Z9h-5i-lXS" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="yY5-6u-obT">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>

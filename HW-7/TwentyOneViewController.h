@@ -26,6 +26,8 @@
     // 停止
     __weak IBOutlet UIButton *buttonStop;
     
+    IBOutletCollection(UILabel) NSArray *labelUserCards;
+    
     int computerScore;
     int userScore;
     int userBet;

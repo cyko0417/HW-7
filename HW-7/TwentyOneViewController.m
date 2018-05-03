@@ -127,11 +127,16 @@
     if (computerCards.count>=5) {
         buttonOneMore.enabled=false;
     }
-    if (userValue>21) {
-        buttonOneMore.enabled=false;
+    // 超過 16 點就可以停
+    if (userValue>16) {
         buttonStop.enabled=true;
+        // 超過 21 點就不能再要牌了
+        if (userValue>21) {
+            buttonOneMore.enabled=false;
+        }
     }
-
+   
+    // 超過 5 張就不能再要牌了
     if (userCards.count>=5) {
         buttonOneMore.enabled=false;
         buttonStop.enabled=true;
@@ -309,8 +314,12 @@
         //((UILabel *) labelComputerCards[i]).text=[computerCards[i] getSymbol];
     }
     NSLog(@"  Cards of user");
+    NSString *msg;
     for (int i=0; i<userCards.count; i++) {
-        NSLog(@"    index=%d, symbol=%@", i, [userCards[i] getSymbol]);
+        msg=[NSString stringWithFormat:@"    index=%d, symbol=%@", i, [userCards[i] getSymbol]];
+        NSLog(@"%@", msg);
+        //NSLog(@"    index=%d, symbol=%@", i, [userCards[i] getSymbol]);
+        //[labelUserCards[i] setTitle:[NSString stringWithFormat:@"%@", [userCards[i] getSymbol]]];
         //((UILabel *) labelComputerCards[i]).text=[computerCards[i] getSymbol];
     }
 }
